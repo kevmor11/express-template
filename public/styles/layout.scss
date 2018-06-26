@@ -1,0 +1,71 @@
+header {
+  a {
+    color: black;
+    font-size: 20px;
+  }
+  a:hover {
+    text-decoration: none;
+    color: grey;
+  }
+}
+
+.input-group-btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  span {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+input.field {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  flex: none !important;
+  width: 300px !important;
+}
+
+select.product {
+  width: 392px !important;
+}
+
+button.submit-prod {
+  margin-left: 150px;
+}
+
+a.add-product {
+  right: 220px;
+  top: 110px;
+  z-index: 2;
+}
+
+label.edit-product {
+  min-width: 120px;
+  text-align: right;
+}
+
+input.text-input {
+  border-radius: 3px;
+  width: 300px;
+  border: .5px solid lightgrey;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+section.product-table {
+  padding-top: 30px;
+
+  table#products {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+}
+
+div.modal-prompt {
+  overflow: visible;
+  min-height: 200px;
+  padding-top: 50px;
+}
