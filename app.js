@@ -4,7 +4,6 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       cookieSession = require("cookie-session"),
-      cookieParser = require("cookie-parser"),
       session = require("express-session"),
       isLoggedIn = require('./util/isLoggedIn');
 
