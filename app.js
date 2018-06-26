@@ -3,6 +3,9 @@ const express = require('express'),
       compression = require('compression'),
       path = require('path'),
       bodyParser = require('body-parser'),
+      cookieSession = require("cookie-session"),
+      cookieParser = require("cookie-parser"),
+      session = require("express-session"),
       isLoggedIn = require('./util/isLoggedIn');
 
 // Setting view engine and middleware
@@ -12,6 +15,13 @@ app.set('views', path.join(__dirname, 'view'))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({ extended: false }))
    .use(express.static(path.join(__dirname, './public')))
+   .use(cookieSession({
+        name: 'session',
+        keys: ['user_id'],
+        // Cookie Options (session cookies expire after 24 hours)
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }))
+    .use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }))
 
 // Routes
 const login = require('./routes/login'),
@@ -22,8 +32,7 @@ app.use('/login', login)
    .use('/logout', logout)
    .use('/products', products);
 
-// app.get('/', isLoggedIn);
-app.get('/', (req, res) => {
+app.get('/', isLoggedIn, (req, res) => {
   res.render('index');
 });
 
@@ -48,5 +57,5 @@ app.use((req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log('Example app listening on port 3000!');
+  console.log(`Example app listening on port ${process.env.PORT}!`);
 });
