@@ -4,7 +4,6 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       cookieSession = require("cookie-session"),
-      session = require("express-session"),
       isLoggedIn = require('./util/isLoggedIn');
 
 // Setting view engine and middleware
@@ -19,8 +18,7 @@ app.set('views', path.join(__dirname, 'view'))
         keys: ['user_id'],
         // Cookie Options (session cookies expire after 24 hours)
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
-    }))
-    .use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }))
+    }));
 
 // Routes
 const login = require('./routes/login'),
